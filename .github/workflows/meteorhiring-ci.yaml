@@ -25,7 +25,7 @@ jobs:
         
       - name: Push To GCR
         env:
-          MONGODB_ADDON_URI: $MONGODB_ADDON_URI
+          MONGODB_ADDON_URI: ${{ secrets.MONGODB_ADDON_URI }}
           ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           
         run: |
