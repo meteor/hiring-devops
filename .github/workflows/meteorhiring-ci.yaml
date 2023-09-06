@@ -1,9 +1,9 @@
-name: Push
+name: Push ECR
 
 on:
   push:
     branches:
-      - main
+      - fix-ci
 
 jobs:
   build:
