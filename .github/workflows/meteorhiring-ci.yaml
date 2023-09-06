@@ -31,3 +31,4 @@ jobs:
           docker build --build-arg MONGODB_ADDON_URI_ARG=$MONGODB_ADDON_URI -t meteorhiring:latest .
           docker tag meteorhiring:latest $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
           docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
+          
