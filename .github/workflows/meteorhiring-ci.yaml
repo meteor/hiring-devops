@@ -29,6 +29,7 @@ jobs:
           ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
           
         run: |
+          echo $MONGODB_ADDON_URI
           docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
           docker build --build-arg MONGODB_ADDON_URI_ARG=$MONGODB_ADDON_URI -t meteorhiring:latest .
           docker tag meteorhiring:latest $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
