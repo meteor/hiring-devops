@@ -28,4 +28,4 @@ jobs:
           docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 508476262833.dkr.ecr.us-east-1.amazonaws.com
           docker build -t meteorhiring:latest .
           docker tag meteorhiring:latest 508476262833.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
-          docker push 508476262833.dkr.ecr.us-east-1.amazonaws.com/meteor:latest
+          docker push 508476262833.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
