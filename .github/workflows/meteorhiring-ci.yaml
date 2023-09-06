@@ -17,15 +17,17 @@ jobs:
         env: 
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          MONGODB_ADDON_URI: ${{ secrets.MONGODB_ADDON_URI }}
-          ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
-        
+
         run: |
            aws configure set aws_access_key_id $AWS_ACCESS_KEY
            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
            aws configure set default.region us-east-1
         
       - name: Push To GCR
+        env:
+          MONGODB_ADDON_URI: ${{ secrets.MONGODB_ADDON_URI }}
+          ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+          
         run: |
           docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
           docker build --build-arg MONGODB_ADDON_URI_ARG=$MONGODB_ADDON_URI -t meteorhiring:latest .
