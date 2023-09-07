@@ -34,3 +34,9 @@ jobs:
           docker build --build-arg MONGODB_ADDON_URI_ARG=$MONGODB_ADDON_URI -t meteorhiring:latest .
           docker tag meteorhiring:latest $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
           docker push $ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest
+      
+      - name: CD to ECS
+
+        run: |
+          aws ecs register-task-definition --family meteorhiring --container-definitions task-definition.json
+          aws ecs create-service --cluster meteorhiring --service-name meteorhiring --task-definition meteorhiring --desired-count 1 --launch-type EC2

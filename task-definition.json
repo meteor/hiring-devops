@@ -1,0 +1,13 @@
+{
+    "containerDefinitions": [
+      {
+        "name": "meteorhiring",
+        "image": "508476262833.dkr.ecr.us-east-1.amazonaws.com/meteorhiring:latest",
+        "memory": 500,
+        "cpu": 10,
+        "essential": true
+      }
+    ],
+    "family": "meteorhiring",
+    "taskRoleArn": "arn:aws:iam::508476262833:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  }
